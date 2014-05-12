@@ -11,7 +11,7 @@ public class Music {
 	private String song;
 	private String newTitle = "";
 
-	File folder = new File("C:/Users/Martijn/Documents/Files");
+	File folder = new File("C:/Users/Gertjan/Documents/Files");
 	File[] listOfFiles = folder.listFiles();
 
 	ArrayList<String> playlist = new ArrayList<String>();
