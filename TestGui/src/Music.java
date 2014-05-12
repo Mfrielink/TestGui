@@ -1,5 +1,10 @@
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.farng.mp3.MP3File;
+import org.farng.mp3.TagException;
+import org.farng.mp3.id3.ID3v1;
 
 public class Music {
 
@@ -16,6 +21,15 @@ public class Music {
 			String filename = listOfFiles[i].getName();
 			playlist.add(filename);
 		}
+		try {
+			getSongTime();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TagException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void removeType() { // removes ".mp3" at the end of the fileName
@@ -30,6 +44,15 @@ public class Music {
 			System.out.println(newTitle);
 			newTitle = "";
 		}
+
+	}
+
+	public void getSongTime() throws IOException, TagException {
+
+		File sourceFile = new File("C:/Users/Martijn/Documents/Files/Sixteen Bars.mp3");
+		MP3File mp3file = new MP3File(sourceFile);
+		ID3v1 tag = mp3file.getID3v1Tag();
+		System.out.println(tag.getArtist());
 
 	}
 
